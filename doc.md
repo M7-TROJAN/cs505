@@ -122,16 +122,6 @@ Project/
 
 ---
 
-## Features
-
-- Modular design with separate responsibilities for each file.
-- Randomized question selection to ensure test variety.
-- User-friendly interface with clear instructions and feedback.
-- Detailed results, including percentage and grade evaluation.
-- Persistent history files for tracking user performance over time.
-
----
-
 ## Sample Output
 
 **Welcome Screen**:
@@ -169,15 +159,16 @@ Test Result         : Very Good
 1. Support for adding new questions through the program.
 2. Timed tests for added challenge.
 3. More question categories like sports, history, etc
+4. we can make it as a web application using HTML, CSS and javascript and json file holding the questions
 
 ---
 
 ## Students Name:
--
+- 
 -
 -
 
 ## Acknowledgments:
-I would like to express my gratitude to the following professors for their guidance:
+We would like to express our gratitude to our distinguished professors for their guidance:
 - Dr. Mostafa Ezzat
 - Dr. Shahira Mohammad
