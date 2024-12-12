@@ -17,7 +17,21 @@ This file contains utility functions that assist the main program with common ta
 
 ---
 
-### 2. `Question.h`
+### 2. `StackLinkedList.h`
+This file provides an implementation of the **Stack** data structure using a linked list.
+
+- **Template**:
+  - The stack is implemented generically using templates to handle any data type, including `Question`.
+
+- **Methods**:
+  - **`Push`**: Adds an element to the top of the stack.
+  - **`Pop`**: Removes the top element from the stack.
+  - **`Top`**: Returns the top element without removing it.
+  - **`IsEmpty`**: Checks if the stack is empty.
+
+---
+
+### 3. `Question.h`
 This file defines the **`Question`** class, which represents a single question in the test.
 
 - **Attributes**:
@@ -32,7 +46,7 @@ This file defines the **`Question`** class, which represents a single question i
 
 ---
 
-### 3. `QuestionBank.h`
+### 4. `QuestionBank.h`
 This file defines the **`QuestionBank`** class, which manages the collection of questions.
 
 - **Attributes**:
@@ -40,11 +54,11 @@ This file defines the **`QuestionBank`** class, which manages the collection of 
 
 - **Methods**:
   - **`LoadQuestionsDataFromFile`**: Reads questions from a file (e.g., `Question.txt`), parses them, and populates the `questions` vector.
-  - **`getRandomQuestions`**: Returns a random subset of questions for the test.
+  - **`getRandomQuestions`**: Returns a random subset of questions for the test as a **`StackLinkedList<Question>`**.
 
 ---
 
-### 4. `Test.h`
+### 5. `Test.h`
 This file defines the **`Test`** class, which handles the core functionality of administering a test.
 
 - **Attributes**:
@@ -56,7 +70,7 @@ This file defines the **`Test`** class, which handles the core functionality of 
   - `questionBank`: An instance of `QuestionBank` for managing the question set.
 
 - **Methods**:
-  - **`start`**: Runs the test, displaying questions, evaluating answers, and recording results.
+  - **`start`**: Runs the test, displaying questions, evaluating answers, and recording results. Uses `StackLinkedList<Question>` to retrieve and manage random questions during the test.
   - **`welcome`**: Displays a welcome message and collects the user's name.
   - **`getScorePercentage`**: Calculates the user's score as a percentage.
   - **`getTestResult`**: Determines the user's grade (e.g., Pass, Fail).
@@ -101,6 +115,7 @@ Project/
 ├── Utilities.h
 ├── Question.h
 ├── QuestionBank.h
+├── StackLinkedList.h
 ├── Test.h
 ├── ProgrammingTest.cpp
 ├── Question.txt
@@ -114,7 +129,7 @@ Project/
 
 1. The program starts with a welcome message and prompts the user to enter his/her name.
 2. The user selects the number of questions they wish to answer.
-3. Questions are randomly selected from the `QuestionBank`.
+3. Questions are randomly selected from the `QuestionBank` and managed using `StackLinkedList`.
 4. The user answers the questions, and their performance is evaluated.
 5. Results are displayed with detailed statistics (e.g., correct answers, percentage, grade).
 6. Results are saved to a history file with a timestamp.
