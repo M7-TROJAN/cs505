@@ -182,7 +182,6 @@ Test Result         : Very Good
 - Mahmoud Mohammad Abdalaziz Mousa (202300472)
 - Moustafa Ismail Ali Abd El-A'al (202300170)
 - Faten Abdulrahman Ahmed Moustafa (202300584)
-- Rabie Yahia Rabie (202300534)
 - Moustafa Hamido Radwan EL-Morsi
 
 ## Acknowledgments:
