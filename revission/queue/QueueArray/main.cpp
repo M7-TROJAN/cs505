@@ -177,6 +177,22 @@ int FindMinItem(const Queue<int>& q)
     return min;
 }
 
+void SplitEvenOdd(Queue<int>& Q, Queue<int>& Q1, Queue<int>& Q2) {
+    int size = Q.Length();
+    int element;
+    for (int i = 0; i < size; i++) {
+        Q.dequeue(element);
+
+        if (element % 2 == 0) {
+            Q2.enqueue(element);
+        } else {
+            Q1.enqueue(element);
+        }
+
+        Q.enqueue(element);
+    }
+}
+
 // Print the queue without modifying it
 void PrintQueue(const Queue<int>& q) // Pass by const reference
 {
