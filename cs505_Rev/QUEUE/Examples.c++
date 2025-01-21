@@ -341,3 +341,76 @@ int main() {
     PrintQueue(oddQueue);
 }
 
+
+
+
+
+//------------------------------------------------------------------------------------------------------------------------
+
+// Question Five: (10 Marks)
+// Assume you are given a complete implementation of the stack class. Implement the Queue ADT, terms of Stack implementation
+#include <iostream>
+#include <stack>
+using namespace std;
+
+template <class Type>
+class Queue {
+private:
+    stack<Type> Stack1, Stack2; // Two stacks to implement the queue
+
+public:
+    // Enqueue operation
+    void enqueue(Type el) {
+        Stack1.push(el); // Add the element to Stack1
+    }
+
+    // Dequeue operation
+    void dequeue(Type& el) {
+        if (Stack2.empty()) {
+            // Transfer elements from Stack1 to Stack2 if Stack2 is empty
+            while (!Stack1.empty()) {
+                Stack2.push(Stack1.top());
+                Stack1.pop();
+            }
+        }
+
+        // Check if Stack2 is still empty after transfer
+        if (Stack2.empty()) {
+            cout << "Queue is empty!" << endl;
+            return;
+        }
+
+        // Remove the front element from Stack2
+        el = Stack2.top();
+        Stack2.pop();
+    }
+
+    // Check if the queue is empty
+    bool IsEmpty() const {
+        return Stack1.empty() && Stack2.empty();
+    }
+
+    // Get the size of the queue
+    int Size() const {
+        return Stack1.size() + Stack2.size();
+    }
+};
+
+int main() {
+    Queue<int> q;
+
+    q.enqueue(1);
+    q.enqueue(2);
+    q.enqueue(3);
+
+    int el;
+    q.dequeue(el); // Should remove 1
+    cout << "Dequeued: " << el << endl;
+
+    q.enqueue(4);
+    q.dequeue(el); // Should remove 2
+    cout << "Dequeued: " << el << endl;
+
+    return 0;
+}
+
