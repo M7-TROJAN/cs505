@@ -414,3 +414,94 @@ int main() {
     return 0;
 }
 
+
+// -------------------------------—--------------------------
+
+// Write a function that searches a circular array based queue to find the specific value and return
+// the index of that value. Hint, The type of the value we are searching for is integer.
+
+#include <iostream>
+using namespace std;
+
+template <class Type>
+class Queue {
+private:
+    Type* queue;   // Pointer to dynamic array
+    int front, rear, count, MaxSize;
+
+public:
+    Queue(int nelements = 128) {
+        queue = new Type[nelements];
+        front = 0;
+        rear = -1;
+        count = 0;
+        MaxSize = nelements;
+    }
+
+    ~Queue() {
+        delete[] queue;
+    }
+
+    void enqueue(Type el) {
+        if (count == MaxSize) {
+            cout << "Queue is full!" << endl;
+            return;
+        }
+        rear = (rear + 1) % MaxSize;
+        queue[rear] = el;
+        count++;
+    }
+
+    void dequeue(Type& el) {
+        if (count == 0) {
+            cout << "Queue is empty!" << endl;
+            return;
+        }
+        el = queue[front];
+        front = (front + 1) % MaxSize;
+        count--;
+    }
+
+    bool IsEmpty() const {
+        return count == 0;
+    }
+
+    int Length() const {
+        return count;
+    }
+
+    // الدالة المطلوبة للبحث في الـ Queue
+    int search(int value) {
+        for (int i = 0; i < count; i++) {
+            // حساب الـ actualIndex
+            int actualIndex = (front + i) % MaxSize;
+            if (queue[actualIndex] == value) {
+                return actualIndex; // رجّع الـ index لو القيمة موجودة
+            }
+        }
+        return -1; // القيمة مش موجودة
+    }
+};
+
+int main() {
+    Queue<int> q(10);
+
+    // إدخال القيم في الـ Queue
+    q.enqueue(10);
+    q.enqueue(20);
+    q.enqueue(30);
+    q.enqueue(40);
+    q.enqueue(50);
+
+    // البحث عن قيمة معينة
+    int value = 30;
+    int index = q.search(value);
+
+    if (index != -1) {
+        cout << "Value " << value << " found at index: " << index << endl;
+    } else {
+        cout << "Value " << value << " not found in the queue." << endl;
+    }
+
+    return 0;
+}
